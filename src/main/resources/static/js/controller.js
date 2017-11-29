@@ -9,9 +9,7 @@ app.controller('rolesController', function($scope) {
 app.controller('ticketController', function($scope,$http) {
     $scope.headingTitle = "Ticket List";
     $http.get('http://localhost:9080/service/getticket').then(function(response) {
-    	console.log("dddddd");
-    	console.log(response.data)
         $scope.ticket = response.data;
-    	console.log($scope.ticket)
+        $scope.tickets = 4;
     });
 });
