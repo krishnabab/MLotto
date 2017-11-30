@@ -1,5 +1,7 @@
 package com.krish.mlotto.rest;
 
+import java.util.List;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +18,13 @@ import com.krish.mlotto.Ticket;
 public class RestServiceController {
 		
 		@Autowired
-		Ticket ticket;
+		List<String> songslist;
 		
 		// http://localhost:9080/service/getticket
 		@RequestMapping(value="/getticket",method= {RequestMethod.GET})
 		public Ticket getTicket() throws Exception {
+			Ticket ticket = new Ticket(songslist);
 			return ticket;
 		}
 		
-		@RequestMapping(value="/getsong",method= {RequestMethod.GET})
-		public String sayHi() {
-			return "Hello Buddy !";
-		}
 }

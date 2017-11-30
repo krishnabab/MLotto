@@ -13,33 +13,29 @@ import org.springframework.stereotype.Controller;
 @Component
 public class Ticket {
 
-@Autowired
-SongsList songslistObj;
-
-public Ticket() {
+public Ticket(List<String> songlslist) {
 		this.ticktID = getTicktID();
-		this.song11 = getRandomSong();
-		this.song12 = getRandomSong();
-		this.song13 = getRandomSong();
-		this.song14 = getRandomSong();
-		this.song15 = getRandomSong();
-		this.song21 = getRandomSong();
-		this.song22 = getRandomSong();
-		this.song23 = getRandomSong();
-		this.song24 = getRandomSong();
-		this.song25 = getRandomSong();
-		this.song31 = getRandomSong();
-		this.song32 = getRandomSong();
-		this.song33 = getRandomSong();
-		this.song34 = getRandomSong();
-		this.song35 = getRandomSong();
+		this.song11 = getRandomSong(songlslist);
+		this.song12 = getRandomSong(songlslist);
+		this.song13 = getRandomSong(songlslist);
+		this.song14 = getRandomSong(songlslist);
+		this.song15 = getRandomSong(songlslist);
+		this.song21 = getRandomSong(songlslist);
+		this.song22 = getRandomSong(songlslist);
+		this.song23 = getRandomSong(songlslist);
+		this.song24 = getRandomSong(songlslist);
+		this.song25 = getRandomSong(songlslist);
+		this.song31 = getRandomSong(songlslist);
+		this.song32 = getRandomSong(songlslist);
+		this.song33 = getRandomSong(songlslist);
+		this.song34 = getRandomSong(songlslist);
+		this.song35 = getRandomSong(songlslist);
 	}
-private String getRandomSong() {
-	String song = "temp";
-/*	String song = songslistObj.songsList.get(0);
-	songslistObj.songsList.remove(0);
-	Collections.shuffle(songslistObj.songsList);*/
-	
+private String getRandomSong(List<String> songlslist) {
+	Collections.shuffle(songlslist);
+	String song = songlslist.get(0);
+	songlslist.remove(0);
+	Collections.shuffle(songlslist);
 	return song;
 }
 @Override
@@ -72,99 +68,6 @@ public String song35;
 public String getTicktID() {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 	return  dateFormat.format(new Date());
-}
-public void setTicktID(String ticktID) {
-	this.ticktID = ticktID;
-}
-public String getSong11() {
-	return song11;
-}
-public void setSong11(String song11) {
-	this.song11 = song11;
-}
-public String getSong12() {
-	return song12;
-}
-public void setSong12(String song12) {
-	this.song12 = song12;
-}
-public String getSong13() {
-	return song13;
-}
-public void setSong13(String song13) {
-	this.song13 = song13;
-}
-public String getSong14() {
-	return song14;
-}
-public void setSong14(String song14) {
-	this.song14 = song14;
-}
-public String getSong15() {
-	return song15;
-}
-public void setSong15(String song15) {
-	this.song15 = song15;
-}
-public String getSong21() {
-	return song21;
-}
-public void setSong21(String song21) {
-	this.song21 = song21;
-}
-public String getSong22() {
-	return song22;
-}
-public void setSong22(String song22) {
-	this.song22 = song22;
-}
-public String getSong23() {
-	return song23;
-}
-public void setSong23(String song23) {
-	this.song23 = song23;
-}
-public String getSong24() {
-	return song24;
-}
-public void setSong24(String song24) {
-	this.song24 = song24;
-}
-public String getSong25() {
-	return song25;
-}
-public void setSong25(String song25) {
-	this.song25 = song25;
-}
-public String getSong31() {
-	return song31;
-}
-public void setSong31(String song31) {
-	this.song31 = song31;
-}
-public String getSong32() {
-	return song32;
-}
-public void setSong32(String song32) {
-	this.song32 = song32;
-}
-public String getSong33() {
-	return song33;
-}
-public void setSong33(String song33) {
-	this.song33 = song33;
-}
-public String getSong34() {
-	return song34;
-}
-public void setSong34(String song34) {
-	this.song34 = song34;
-}
-public String getSong35() {
-	return song35;
-}
-public void setSong35(String song35) {
-	this.song35 = song35;
 }
 
 }
