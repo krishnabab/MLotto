@@ -1,10 +1,12 @@
 package com.krish.mlotto;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,30 +15,34 @@ import org.springframework.stereotype.Controller;
 @Component
 public class Ticket {
 
+private static AtomicLong atomicCounter = new AtomicLong();
+
 public Ticket(List<String> songlslist) {
 		this.ticktID = getTicktID();
-		this.song11 = getRandomSong(songlslist);
-		this.song12 = getRandomSong(songlslist);
-		this.song13 = getRandomSong(songlslist);
-		this.song14 = getRandomSong(songlslist);
-		this.song15 = getRandomSong(songlslist);
-		this.song21 = getRandomSong(songlslist);
-		this.song22 = getRandomSong(songlslist);
-		this.song23 = getRandomSong(songlslist);
-		this.song24 = getRandomSong(songlslist);
-		this.song25 = getRandomSong(songlslist);
-		this.song31 = getRandomSong(songlslist);
-		this.song32 = getRandomSong(songlslist);
-		this.song33 = getRandomSong(songlslist);
-		this.song34 = getRandomSong(songlslist);
-		this.song35 = getRandomSong(songlslist);
+		String[] ticketSongs = get15RandomSongs(songlslist);
+		this.song11 = ticketSongs[0];
+		this.song12 = ticketSongs[1];;
+		this.song13 = ticketSongs[2];;
+		this.song14 = ticketSongs[3];;
+		this.song15 = ticketSongs[4];
+		this.song21 = ticketSongs[5];
+		this.song22 = ticketSongs[6];
+		this.song23 = ticketSongs[7];
+		this.song24 = ticketSongs[8];
+		this.song25 = ticketSongs[9];
+		this.song31 = ticketSongs[10];
+		this.song32 = ticketSongs[11];
+		this.song33 = ticketSongs[12];
+		this.song34 = ticketSongs[13];
+		this.song35 = ticketSongs[14];
 	}
-private String getRandomSong(List<String> songlslist) {
+private String[] get15RandomSongs(List<String> songlslist) {
 	Collections.shuffle(songlslist);
-	String song = songlslist.get(0);
-	songlslist.remove(0);
+	String[] ticketSongs = new String[15];
+	for(int i=0;i<15;i++) ticketSongs[i] = songlslist.get(i);
 	Collections.shuffle(songlslist);
-	return song;
+	Arrays.sort(ticketSongs);
+	return ticketSongs;
 }
 @Override
 	public String toString() {
@@ -66,8 +72,12 @@ public String song34;
 public String song35;
 
 public String getTicktID() {
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-	return  dateFormat.format(new Date());
+	//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+	//return  dateFormat.format(new Date());
+	//String tickeID = UUID.randomUUID().toString();
+	//return tickeID;
+	return String.valueOf(atomicCounter.getAndIncrement());
+	
 }
 
 }

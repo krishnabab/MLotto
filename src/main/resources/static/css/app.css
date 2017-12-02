@@ -13,3 +13,31 @@
 .photo{
     padding-right: 5px;
 }
+
+tr.success td {
+    background-color: #dff0d8 !important;
+    -webkit-print-color-adjust: exact;
+}
+
+tr.danger td {
+    background-color: #f2dede !important;
+    -webkit-print-color-adjust: exact;
+}
+
+tr.warning th{
+	 background-color: #ffbb33 !important;
+    -webkit-print-color-adjust: exact;
+}
+tr.info td{
+	 background-color: #33b5e5 !important;
+    -webkit-print-color-adjust: exact;
+}
+
+@media print
+{
+  table { display:inline-block; margin-bottom:30px; }
+  tr    { page-break-inside:avoid; page-break-after:auto }
+  td    { page-break-inside:avoid; page-break-after:auto }
+  thead { display:table-header-group }
+  tfoot { display:table-footer-group; height: 130px; }
+}
