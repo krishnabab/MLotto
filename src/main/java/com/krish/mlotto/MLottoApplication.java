@@ -8,8 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 //@ComponentScan({"com.krish.mlotto","com.krish.mlotto.rest"})
 @ComponentScan
 public class MLottoApplication {
-	
-	
 	 public static void main(String[] args) {
 		SpringApplication.run(MLottoApplication.class, args);
 	}
